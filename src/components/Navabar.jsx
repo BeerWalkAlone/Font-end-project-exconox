@@ -8,14 +8,24 @@ const textStyle = {
   cursor: "pointer",
 };
 
-export default function Navabar() {
+export default function Navabar(props) {
   const navigate = useNavigate();
   const handleNvigate = (path) => {
     navigate(path);
   };
+
+  const handleLogin = () =>{
+    props.setopenSignInDiag(true)
+  }
+  const handleLoginUp = () =>{
+    props.setopensignUpDiag(true)
+  }
+
   return (
-    <Box sx={{background:' rgb(255,8,68)',
-      background: 'linear-gradient(90deg, rgba(255,8,68,1) 0%, rgba(255,177,153,1) 50%)'}}>
+    <Box sx={{
+      background: ' rgb(255,8,68)',
+      background: 'linear-gradient(90deg, rgba(255,8,68,1) 0%, rgba(255,177,153,1) 50%)'
+    }}>
       <Container maxWidth="xl">
         <Box
           display={"flex"}
@@ -55,10 +65,10 @@ export default function Navabar() {
             display={{ sm: "flex", xs: "none" }}
             justifyContent={"flex-end"}
           >
-            <Button variant="contained" color="success" sx={{ marginRight: 2 }}>
+            <Button variant="contained" color="success" sx={{ marginRight: 2 }} onClick={handleLogin}>
               Sign In
             </Button>
-            <Button variant="contained">Sign Up</Button>
+            <Button variant="contained" onClick={handleLoginUp}>Sign Up</Button>
           </Box>
           <WidgetsIcon
             fontSize="large"
