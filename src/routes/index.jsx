@@ -19,26 +19,31 @@ export default function Index() {
     const handleCloseSignUpDiag = () => {
         setopensignUpDiag(false)
     }
-        return (
-            <>
-                <BrowserRouter>
-                    <Navabar setopenSignInDiag={setopenSignInDiag} setopensignUpDiag={setopensignUpDiag} />
-                    <Routes>
+    return (
+        <>
+            <BrowserRouter>
+                <Navabar setopenSignInDiag={setopenSignInDiag} setopensignUpDiag={setopensignUpDiag} />
+                <Routes>
 
-                        <Route path="/" element={<Home />} />
-                        <Route path="/project" element={<Project />} />
-                        <Route path="/about-us" element={<Aboutus />} />
-                        <Route path="/contractus" element={<Contractus />} />
-                        <Route path="/story" element={<Story />} />
-                    </Routes>
-                    <SignInDialog 
-                    open={openSignInDiag} 
+                    <Route path="/" element={<Home />} />
+                    <Route path="/project" element={<Project />} />
+                    <Route path="/about-us" element={<Aboutus />} />
+                    <Route path="/contractus" element={<Contractus />} />
+                    <Route path="/story" element={<Story />} />
+                </Routes>
+                <SignInDialog
+                    open={openSignInDiag}
                     handleCloseSignInDiag={handleCloseSignInDiag}
-                    setopenSignInDiag= {setopenSignInDiag}
-                    setopensignUpDiag = {setopensignUpDiag}
-                    />
-                    <SignUpDiag openUp={opensignUpDiag} handleCloseSignUpDiag ={handleCloseSignUpDiag}/>
-                </BrowserRouter></>
-        )
-    }
-    
+                    setopenSignInDiag={setopenSignInDiag}
+                    setopensignUpDiag={setopensignUpDiag}
+                />
+                <SignUpDiag
+                    openUp={opensignUpDiag}
+                    handleCloseSignUpDiag={handleCloseSignUpDiag}
+                    setopenSignInDiag={setopenSignInDiag}
+                    setopensignUpDiag={setopensignUpDiag}
+                />
+            
+            </BrowserRouter></>
+    )
+}

@@ -23,8 +23,8 @@ export default function Navabar(props) {
 
   return (
     <Box sx={{
-      background: ' rgb(255,8,68)',
-      background: 'linear-gradient(90deg, rgba(255,8,68,1) 0%, rgba(255,177,153,1) 50%)'
+      background: ' rgb(0,139,139)',
+      background: 'linear-gradient(90deg, #9ebd13 0%, #008552 100%);'
     }}>
       <Container maxWidth="xl">
         <Box
