@@ -5,13 +5,14 @@ export default function aboutus() {
   return (
     <Box sx={{
       background: 'rgb(124, 185, 232)',
-      background: 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);',
+      background: '-webkit-linear-gradient(to right, #085078, #85d8ce)',
+      background: 'linear-gradient(to right, #085078, #85d8ce)',
       height: "100vh"
     }}>
       <Container maxWidth='xl' sx={{ display: { md: 'flex', xs: 'block' }, alignItems: 'center', height: '100vh' }}>
         <Box width={{ md: '50%', xs: '100%' }}>
           <h1 style={{ marginTop: 0, fontSize: 50 }}>About Us</h1>
-          <p style={{ fontSize: 20, fontFamily:'inherit'}}>
+          <p style={{ fontSize: 20, fontFamily: 'inherit' }}>
             t is a long established fact that a reader will be distracted by the
             readable content of a page when looking at its layout. The point of
             using Lorem Ipsum is that it has a more-or-less normal distribution

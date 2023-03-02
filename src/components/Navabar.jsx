@@ -24,7 +24,7 @@ export default function Navabar(props) {
   return (
     <Box sx={{
       background: ' rgb(0,139,139)',
-      background: 'linear-gradient(90deg, #9ebd13 0%, #008552 100%);'
+      background: 'radial-gradient(circle, rgba(1,114,175,1) 20%, rgba(116,254,189,1) 100%)'
     }}>
       <Container maxWidth="xl">
         <Box

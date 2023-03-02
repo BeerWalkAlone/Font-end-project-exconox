@@ -14,16 +14,15 @@ export default function Home() {
       background: 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%);',
       height: "100vh"
     }}>
-      <Container maxWidth='xl' sx={{ display: { md: 'flex', xs: 'block' }, height: '100vh' }}>
-
-        <Box flex={1} width={{ md: '50%', xs: '100%' }} marginTop={'20vh'}>
-          <h1 style={{fontSize:50}}> Welcome to ECONOX Laos</h1>
+      <Container maxWidth='xl' sx={{ display: { md: 'flex', xs: 'block' }, alignItems: 'center', height: '100vh' }}>
+        <Box width={{ md: '50%', xs: '100%' }}>
+          <h1 style={{ marginTop: 0, fontSize: 50 }}> Welcome to ECONOX Laos</h1>
           <p style={{ fontSize: 20 }}>We provide services for Environmental Impact Assessment, <br></br> Consultancy for Corporate Social Responsibi</p>
-          <Button sx={{backgroundColor: "brown" ,color:"yellow"}}
+          <Button sx={{ backgroundColor: "brown", color: "yellow" }}
             onClick={() => handleNvigate("/about-us")}>Contact Us</Button>
         </Box>
-        <Box flex={1} marginTop={'10vh'}>
-          <img src={ImaBackground} alt="" width={'70%'}  />
+        <Box width={{ md: '50%', xs: '100%' }} marginTop={'15vh'}>
+          <img src={ImaBackground} alt="" width={'70%'} />
         </Box>
       </Container>
     </Box>

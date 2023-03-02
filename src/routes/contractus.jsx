@@ -3,8 +3,16 @@ import { Container, TextField, Typography, Box, Stack, Button } from "@mui/mater
 import Img from "../Images/mail.png";
 export default function contractus() {
   return (
+    <Box sx={{
+      background: 'rgb(124, 185, 232)',
+      background: '-webkit-linear-gradient(to right, #1d2b64, #f8cdda)',
+      background: 'linear-gradient(to right, #1d2b64, #f8cdda)',
+      height: "100vh"
+    }}>
+
+    
     <Container maxWidth="lg">
-      <Typography variant="h4" fontFamily={"initial"} align="center" marginTop={'25px'}>
+      <Typography variant="h4" fontFamily={"initial"} align="center" marginTop={'0px'}>
         Have some questions?
       </Typography>
       <Box display={{ md: "flex", xs: 'block' }} marginTop={"5%"}>
@@ -44,6 +52,7 @@ export default function contractus() {
           <Button variant="contained" sx={{ width: { md: '60%', sx: '100%' } }}>Send Message</Button>
         </Stack>
       </Box>
-    </Container>
+      </Container>
+    </Box>
   );
 }
