@@ -23,8 +23,7 @@ export default function Navabar(props) {
 
   return (
     <Box sx={{
-      background: ' rgb(0,139,139)',
-      background: 'radial-gradient(circle, rgba(1,114,175,1) 20%, rgba(116,254,189,1) 100%)'
+      backgroundImage:'radial-gradient( circle farthest-corner at 10% 20%,  rgba(0,195,229,1) 0%, rgba(5,71,105,1) 90% );'
     }}>
       <Container maxWidth="xl">
         <Box
@@ -65,10 +64,24 @@ export default function Navabar(props) {
             display={{ sm: "flex", xs: "none" }}
             justifyContent={"flex-end"}
           >
-            <Button variant="contained" color="success" sx={{ marginRight: 2 }} onClick={handleLogin}>
+            <Button variant="contained" sx={{
+              marginRight: 2,
+              backgroundImage: 'linear-gradient(to right, #348F50 0%, #56B4D3  50%, #348F50  100%);',
+              padding: '15px 45px;',
+                       
+              borderRadius: '10px;',
+             
+            }} onClick={handleLogin}>
               Sign In
             </Button>
-            <Button variant="contained" onClick={handleLoginUp}>Sign Up</Button>
+            <Button variant="contained" sx={{
+              marginRight: 2,
+              backgroundImage: 'linear-gradient(to right, #1D2B64 0%, #F8CDDA  100%, #1D2B64  100%);',
+              padding: '15px 45px;',
+              
+              borderRadius: '10px;',
+              }}
+              onClick={handleLoginUp}>Sign Up</Button>
           </Box>
           <WidgetsIcon
             fontSize="large"

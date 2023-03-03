@@ -4,18 +4,16 @@ import Img from "../Images/mail.png";
 export default function contractus() {
   return (
     <Box sx={{
-      background: 'rgb(124, 185, 232)',
-      background: '-webkit-linear-gradient(to right, #1d2b64, #f8cdda)',
-      background: 'linear-gradient(to right, #1d2b64, #f8cdda)',
+      background:'linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);',
       height: "100vh"
     }}>
-
+     
     
     <Container maxWidth="lg">
       <Typography variant="h4" fontFamily={"initial"} align="center" marginTop={'0px'}>
         Have some questions?
       </Typography>
-      <Box display={{ md: "flex", xs: 'block' }} marginTop={"5%"}>
+      <Box display={{ md: "flex", xs: 'block' }} marginTop={"15%"}>
         <Box
           width={{ md: "50%", xs: '100%' }}
           display="flex"
