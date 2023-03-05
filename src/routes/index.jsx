@@ -8,9 +8,12 @@ import Story from './story'
 import Navabar from "../components/Navabar";
 import SignInDialog from "../components/SignInDialog";
 import SignUpDiag from "../components/SignUpDiag";
+import Profile from "./Profile";
 export default function Index() {
     const [openSignInDiag, setopenSignInDiag] = useState(false)
     const [opensignUpDiag, setopensignUpDiag] = useState(false)
+    const [isloginIn, setisloginIn] = useState(true)
+
 
     const handleCloseSignInDiag = () => {
         setopenSignInDiag(false)
@@ -22,7 +25,7 @@ export default function Index() {
     return (
         <>
             <BrowserRouter>
-                <Navabar setopenSignInDiag={setopenSignInDiag} setopensignUpDiag={setopensignUpDiag} />
+                <Navabar setopenSignInDiag={setopenSignInDiag} setopensignUpDiag={setopensignUpDiag} isloginIn={isloginIn}/>
                 <Routes>
 
                     <Route path="/" element={<Home />} />
@@ -30,6 +33,7 @@ export default function Index() {
                     <Route path="/about-us" element={<Aboutus />} />
                     <Route path="/contractus" element={<Contractus />} />
                     <Route path="/story" element={<Story />} />
+                    <Route path="/profile" element={<Profile />} />
                 </Routes>
                 <SignInDialog
                     open={openSignInDiag}
