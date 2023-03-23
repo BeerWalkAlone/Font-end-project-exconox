@@ -12,8 +12,8 @@ export default function CardAboutus(props) {
             }}>
                 <CardMedia
                     component={'img'}
-                    height='350px'
-                    width={'300'}
+                    height='240px'
+                    width={'150'}
                     image={props.img} />
                 <CardContent>
                     <Typography variant='h5' gutterBottom>{props.title}</Typography>

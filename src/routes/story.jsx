@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, TextField, Typography, Box, Stack, Button, Divider} from "@mui/material"
+import { Container, TextField, Typography, Box, Stack, Button, Divider } from "@mui/material"
 import Img from '../Images/Econox.jpg'
 import Img2 from '../Images/700464-3.jpg'
 import Img3 from '../Images/410tQjnN7XL.jpg'
@@ -12,7 +12,7 @@ export default function story() {
       background: 'linear-gradient(to right, #D6A4A4, #DAE2F8)',
       height: "100%"
     }}>
-      <Container maxWidth='lg' sx={{ flexDirection: { md:'row', xs:'column'}, alignItems: 'center', paddingTop: 5 }} >
+      <Container maxWidth='lg' sx={{ flexDirection: { md: 'row', xs: 'column' }, alignItems: 'center', paddingTop: 5 }} >
         <Typography flex={1} variant="h5" fontFamily={"revert-layer"} align="center" marginTop={'0px'}>
           <h1 style={{ fontSize: 38 }}>We create dreams for the future. <br />We realize them sucessfully.</h1>
           <p style={{ fontSize: 20, fontFamily: "unset" }}>Check out our new font generator and level up your social bios. Need more? Head over to Glyphy
@@ -22,15 +22,15 @@ export default function story() {
         </Typography>
         <hr />
 
-        <Box display={{md: "flex", xs: 'block'}}>
-        <Box display={"flex"} flex={1} alignItems={{md:'flex-end', xs:'center'}} flexDirection='column' paddingRight={{md:5, xs:0}}>
-          <h1 style={{ fontSize: 48, color: 'blue' }}>2023</h1>
-          <img src={Img} width={"100%"} />
-        </Box>
+        <Box display={{ md: "flex", xs: 'block' }}>
+          <Box display={"flex"} flex={1} alignItems={{ md: 'flex-end', xs: 'center' }} flexDirection='column' paddingRight={{ md: 5, xs: 0 }}>
+            <h1 style={{ fontSize: 48, color: 'blue' }}>2023</h1>
+            <img src={Img} width={"100%"} />
+          </Box>
 
-        <Divider flexItem orientation='vertical' />
-        <Box display={{ md: "flex", xs: 'block' }} flex={1} paddingTop={10} >
-        
+          <Divider flexItem orientation='vertical' />
+          <Box display={{ md: "flex", xs: 'block' }} flex={1} paddingTop={10} >
+
             <Stack width={"100%"} alignItems={"self-start"} paddingLeft={5}>
               <h1>The standard Lorem Ipsum passage</h1>
               <p style={{ fontFamily: "revert", fontSize: 20 }}>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -38,8 +38,8 @@ export default function story() {
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
             </Stack>
-          
-        </Box>
+
+          </Box>
         </Box>
         <hr />
 

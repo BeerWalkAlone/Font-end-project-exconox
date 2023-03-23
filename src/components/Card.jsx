@@ -14,7 +14,8 @@ export default function ProjectCard(props) {
             <CardContent>
                 <Typography variant='h5' gutterBottom>{props.title}</Typography>
                 <hr />
-                <Typography variant='body2'>{props.body2}</Typography>
+                <Typography variant='body2'  fontSize={15}>{props.body2.substring(0,270)}
+                {props.body2.length > 270?'.....': null}</Typography>
             </CardContent>
             <Button>Info</Button>
         </Card>

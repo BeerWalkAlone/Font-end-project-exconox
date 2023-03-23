@@ -26,10 +26,10 @@ export default function Profile() {
       background: 'linear-gradient(90deg, #e3ffe7 0%, #d9e7ff 100%)',
       height: "100%"
     }}>
-    <Container maxWidth='lg' sx={{ flexDirection: { md: 'row', xs: 'column' }, paddingTop: 5 }} >
+      <Container maxWidth='lg' sx={{ flexDirection: { md: 'row', xs: 'column' }, paddingTop: 5 }} >
 
-      
-      <Card sx={{ maxWidth: 1200, background:'AliceBlue' }}>
+
+        <Card sx={{ maxWidth: 1200, background: 'AliceBlue' }}>
           <Box display={'flex'} flex={1} pt={5} paddingLeft={5}>
             <Box >
               <Avatar sx={{ width: 200, height: 250 }}>
@@ -74,7 +74,7 @@ export default function Profile() {
             <Box >
               <h3 style={{ color: '#A9A9A9' }}>Password</h3>
             </Box>
-            <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40 }}>
+            <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40.1 }}>
               <TextField fullWidth id="standard-basic" label="Password" variant="outlined" type="password" />
             </Box>
           </Box>
@@ -83,7 +83,7 @@ export default function Profile() {
             <Box >
               <h3 style={{ color: '#A9A9A9' }}>Full name</h3>
             </Box>
-            <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 39 }}>
+            <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40 }}>
               <TextField fullWidth id="standard-basic" label="john Wick 4" variant="outlined" />
             </Box>
           </Box>
@@ -92,7 +92,7 @@ export default function Profile() {
             <Box >
               <h3 style={{ color: '#A9A9A9' }}>Title</h3>
             </Box>
-            <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 44 }}>
+            <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 45.2 }}>
               <TextField fullWidth id="standard-basic" label="Title" variant="outlined" />
             </Box>
           </Box>
@@ -101,7 +101,7 @@ export default function Profile() {
             <Box >
               <h3 style={{ color: '#A9A9A9' }}>Language</h3>
             </Box>
-            <Box sx={{ width: 300, maxWidth: '100%', paddingLeft: 38 }}>
+            <Box sx={{ width: 300, maxWidth: '100%', paddingLeft: 40 }}>
               <TextField fullWidth
                 id="outlined-select-Language"
                 select
@@ -118,7 +118,7 @@ export default function Profile() {
             </Box>
           </Box>
         </Card>
-    </Container>
+      </Container>
     </Box>
   )
 }

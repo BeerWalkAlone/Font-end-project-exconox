@@ -26,7 +26,7 @@ export default function aboutus() {
       background: '#f8f8ff',
       height: "160vh"
     }}>
-      <Container maxWidth='xl' sx={{ flexDirection: { md: 'row', xs: 'column' }, alignItems: 'center', height: '100vh', paddingTop: 3 }}>
+      <Container maxWidth='lg' sx={{ flexDirection: { md: 'row', xs: 'column' }, alignItems: 'center', height: '100vh', paddingTop: 3 }}>
 
         <Typography flex={1} variant="h4" fontFamily={"monospace"} align="center">Our Story</Typography>
 
@@ -63,7 +63,7 @@ export default function aboutus() {
             </Box> 
           )}
           <Box paddingTop={5}>
-            <img src={Imgphoto} alt="" width={'400px'} height={'500px'} />
+            <img src={Imgphoto} alt="" width={'400px'} height={'300px'} />
           </Box>
           
         </Box>

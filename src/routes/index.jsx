@@ -12,7 +12,7 @@ import Profile from "./Profile";
 export default function Index() {
     const [openSignInDiag, setopenSignInDiag] = useState(false)
     const [opensignUpDiag, setopensignUpDiag] = useState(false)
-    const [isloginIn, setisloginIn] = useState(true)
+    const [isloginIn, setisloginIn] = useState(false)
 
 
     const handleCloseSignInDiag = () => {
