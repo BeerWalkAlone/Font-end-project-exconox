@@ -8,13 +8,31 @@ export default function SignInDialog(props) {
         props.setopenSignInDiag(false)
         props.setopensignUpDiag(true)
     }
-    const handleSignUp = () => {
+    const handleSignIn = () => {
         axios({
-            url: 'http://localhost:3001/login',
+            url: window.$api + '/login',
             method: 'post',
-            data: signInData
+            data: signInData,
+            withCredentials: true
         }).then(res => {
-            console.log(res.data)
+            switch (res.data.status) {
+                case 200:
+                    setsignInData({})
+                    alert(res.data.msg)
+                    props.setopenSignInDiag(false)
+                    props.setisloginIn(true)
+                    break;
+                case 409:
+                   alert(res.data.msg)
+                    break;
+                case 404:
+                    alert(res.data.msg)
+                    break;           
+                default:
+                    alert('Login failed')
+                    break;
+            }
+            
         })
     }
     const handleChange = (e) => {
@@ -45,7 +63,7 @@ export default function SignInDialog(props) {
                 </Stack>
             </DialogContent>
             <DialogActions>
-                <Button color='success' onClick={handleChange}>Sign In</Button>
+                <Button color='success' onClick={handleSignIn}>Sign In</Button>
                 <Button color='error' onClick={handleOpenSignUp}>Sign Up</Button>
             </DialogActions>
         </Dialog>

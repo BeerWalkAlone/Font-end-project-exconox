@@ -12,7 +12,7 @@ export default function SignUpDiag(props) {
     const handleSignUp = () => {
         if (signUpData.password === signUpData.conpassword) {
             axios({
-                url: 'http://localhost:3001/register',
+                url: window.$api + '/register',
                 method: 'post',
                 data: signUpData
             }).then(res => {
