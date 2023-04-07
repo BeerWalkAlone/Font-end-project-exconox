@@ -11,29 +11,35 @@ import SignUpDiag from "../components/SignUpDiag";
 import Profile from "./Profile";
 import axios from "axios";
 
+import LuangPrabang from '../Detail-project/LuangPrabang'
+import VangVieng from '../Detail-project/vang vieng'
+import Vientiane from '../Detail-project/Vientiane'
+import XiengKhouang from '../Detail-project/Xieng khouang'
+import WatXiengThong from "../Detail-project/WatXiengThong";
+import VatPhou from "../Detail-project/Vat Phou";
 export default function Index() {
     const [openSignInDiag, setopenSignInDiag] = useState(false)
     const [opensignUpDiag, setopensignUpDiag] = useState(false)
     const [isloginIn, setisloginIn] = useState(false)
 
     useEffect(() => {
-      axios({
-        url:window.$api +'/refresh',
-        method:'post',
-        withCredentials: true
-      }).then(res => {
-        switch (res.data.status) {
-            case 200:
-                setisloginIn(true)
-                break;
-        
-            default:
-                console.log(res.data)
-                break;
-        }
-      })
+        axios({
+            url: window.$api + '/refresh',
+            method: 'post',
+            withCredentials: true
+        }).then(res => {
+            switch (res.data.status) {
+                case 200:
+                    setisloginIn(true)
+                    break;
+
+                default:
+                    console.log(res.data)
+                    break;
+            }
+        })
     }, [])
-    
+
 
     const handleCloseSignInDiag = () => {
         setopenSignInDiag(false)
@@ -45,7 +51,7 @@ export default function Index() {
     return (
         <>
             <BrowserRouter>
-                <Navabar setopenSignInDiag={setopenSignInDiag} setopensignUpDiag={setopensignUpDiag} isloginIn={isloginIn}/>
+                <Navabar setopenSignInDiag={setopenSignInDiag} setopensignUpDiag={setopensignUpDiag} isloginIn={isloginIn} />
                 <Routes>
 
                     <Route path="/" element={<Home />} />
@@ -54,6 +60,13 @@ export default function Index() {
                     <Route path="/contractus" element={<Contractus />} />
                     <Route path="/story" element={<Story />} />
                     <Route path="/profile" element={<Profile />} />
+
+                    <Route path="/luangPrabang" element={<LuangPrabang />} />
+                    <Route path="/vangVieng" element={<VangVieng />} />
+                    <Route path="/vientiane" element={<Vientiane />} />
+                    <Route path="/xiengKhouang" element={<XiengKhouang />} />
+                    <Route path="/watxiengthong" element={<WatXiengThong />} />
+                    <Route path="/vutphou" element={<VatPhou />} />
                 </Routes>
                 <SignInDialog
                     open={openSignInDiag}
@@ -68,7 +81,7 @@ export default function Index() {
                     setopenSignInDiag={setopenSignInDiag}
                     setopensignUpDiag={setopensignUpDiag}
                 />
-            
+
             </BrowserRouter></>
     )
 }

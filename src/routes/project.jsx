@@ -1,19 +1,25 @@
 import React from 'react'
-import { Container, TextField, Typography, Box, Stack, Button } from "@mui/material"
+import { Container, Typography, Box, Stack, Button } from "@mui/material"
 import Card from '../components/Card'
 import ImgPTL from '../image/Pha That Luang .jpg'
-import ImgPM from '../image/Patuxay Monument.jpg'
+import ImgPM from '../image/luang-prabang.jpg'
 import ImgWXT from '../image/Wat Xieng Thong.png'
 import ImgVV from '../image/Vang Vieng Travel Guide.jpg'
 import ImgPJ from '../image/The plan of jar.jpg'
 import ImgVP from '../image/Vat Phou.jpg'
+
+
 export default function project() {
+
+ 
+
   const data = [
     {
       id: 1, title: 'Pha That Luang Vientiane', img: ImgPTL, body2: 'Phra That Luang or Phra Chedi Lok Chulamanee It is the most important religious place in Laos. It is a very important sanctuary of Vientiane. It can be said that who has come to Vientiane did not come to pay respect to Phra That Luang almost called Havent arrived in Vientiane at all.'
+
     },
     {
-      id: 2, title: 'Patuxay Monument', img: ImgPM, body2: 'The Vientiane Arc de Triomphe is located in the middle of the city and is a landmark building in Vientiane. The appearance is similar to the Arc de Triomphe in Paris, and it is also connected to the more prosperous avenues, but the internal structure has a strong Buddhist culture.'
+      id: 2, title: 'Luang Prabang', img: ImgPM, body2: 'Located in Northern Laos lies Luang Prabang which was once the royal capital of the country up until 1975. Tourists can explore the citys many Buddhist temples, like the Wat Xieng Thong and the Wat Mai!.Apart from these religious landmarks, Luang Prabang is also known for its natural wonders.'
     },
     {
       id: 3, title: 'Wat Xieng Thong', img: ImgWXT, body2: 'Wat Siang Thong is a magnificent and beautiful temple in Luang Prabang, located near the Mekong River. It was built by King Setthathirat in 1560 and was the private property of the royal family until 1975. The main hall represents the classic architectural style of Luang Prabang temples.'
@@ -48,6 +54,7 @@ export default function project() {
                 title={row.title}
                 img={row.img}
                 body2={row.body2}
+               
               />
             </Box>
           )}
