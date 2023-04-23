@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, TextField, Typography, Box, Stack, Button, Divider } from "@mui/material"
 import Img from '../Images/Econox.jpg'
 import Img2 from '../Images/700464-3.jpg'
 import Img3 from '../Images/410tQjnN7XL.jpg'
-import { fontSize } from '@mui/system'
+import axios from 'axios'
+// import { fontSize } from '@mui/system'
 export default function story() {
+  // const [storyData,setstoryData] = useState([])
+  // useEffect(() => {
+  //   axios ({
+  //     url:window.$api+'/stories',
+  //     method:'get'
+  //   }).then(res => {
+  //     console.log(res.data)
+  //   })
+  // },[])
+
   return (
     <Box sx={{
       background: 'rgb(124, 185, 232)',
@@ -21,8 +32,8 @@ export default function story() {
             <br />“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.”</p>
         </Typography>
         <hr />
-
-        <Box display={{ md: "flex", xs: 'block' }}>
+        
+         <Box display={{ md: "flex", xs: 'block' }}>
           <Box display={"flex"} flex={1} alignItems={{ md: 'flex-end', xs: 'center' }} flexDirection='column' paddingRight={{ md: 5, xs: 0 }}>
             <h1 style={{ fontSize: 48, color: 'blue' }}>2023</h1>
             <img src={Img} width={"100%"} />
@@ -72,8 +83,6 @@ export default function story() {
           </Stack>
         </Box>
       </Container>
-
-
     </Box>
   )
 }

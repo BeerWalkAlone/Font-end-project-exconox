@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect , createContext} from "react";
 import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import Home from "./Home";
 import Project from './project'
@@ -17,10 +17,13 @@ import Vientiane from '../Detail-project/Vientiane'
 import XiengKhouang from '../Detail-project/Xieng khouang'
 import WatXiengThong from "../Detail-project/WatXiengThong";
 import VatPhou from "../Detail-project/Vat Phou";
+
+export const userContext = createContext(null)
 export default function Index() {
     const [openSignInDiag, setopenSignInDiag] = useState(false)
     const [opensignUpDiag, setopensignUpDiag] = useState(false)
     const [isloginIn, setisloginIn] = useState(false)
+    const [userinfo, setuserinfo] = useState(false)
 
     useEffect(() => {
         axios({
@@ -48,8 +51,15 @@ export default function Index() {
     const handleCloseSignUpDiag = () => {
         setopensignUpDiag(false)
     }
+
+    const globalState = {
+        isloginIn,
+        setisloginIn,
+        userinfo
+    }
     return (
         <>
+        <userContext.Provider value={globalState}>
             <BrowserRouter>
                 <Navabar setopenSignInDiag={setopenSignInDiag} setopensignUpDiag={setopensignUpDiag} isloginIn={isloginIn} />
                 <Routes>
@@ -82,6 +92,8 @@ export default function Index() {
                     setopensignUpDiag={setopensignUpDiag}
                 />
 
-            </BrowserRouter></>
+            </BrowserRouter>
+     </userContext.Provider>
+ </>
     )
 }

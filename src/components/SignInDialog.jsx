@@ -21,6 +21,8 @@ export default function SignInDialog(props) {
                     alert(res.data.msg)
                     props.setopenSignInDiag(false)
                     props.setisloginIn(true)
+                    console.log(res.data)
+                    
                     break;
                 case 409:
                    alert(res.data.msg)

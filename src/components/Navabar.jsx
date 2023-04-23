@@ -1,7 +1,8 @@
-import React from "react";
-import { Button, Box, Container, IconButton, Menu, MenuItem,Avatar } from "@mui/material/";
-import { makeStyles } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
+import React, {useContext} from "react";
+import { Button, Box, Container, IconButton, Menu, MenuItem, Avatar } from "@mui/material/";
+import { userContext } from "../routes";
+import {useNavigate} from 'react-router-dom'
+
 import WidgetsIcon from "@mui/icons-material/Widgets";
 const textStyle = {
   fontSize: 20,
@@ -9,6 +10,11 @@ const textStyle = {
 };
 
 export default function Navabar(props) {
+  const [anchorEl, setAnchorEl] = React.useState(null)
+  const open = Boolean(anchorEl)
+  const { isloginIn} = useContext(userContext)
+
+
   const navigate = useNavigate();
   const handleNvigate = (path) => {
     navigate(path);
@@ -21,8 +27,8 @@ export default function Navabar(props) {
     props.setopensignUpDiag(true)
   }
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+  // const [anchorEl, setAnchorEl] = React.useState(null);
+  // const open = Boolean(anchorEl);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -72,41 +78,49 @@ export default function Navabar(props) {
 
           <Box
             flex={1}
-            display={{ sm: "flex", xs: "none" }}
+            display={{ md: "flex", xs: "none" }}
             justifyContent={"flex-end"}
           >
-              {props.isloginIn ?
-              <IconButton onClick={() => handleNvigate("/profile")}>
-          <Avatar>B</Avatar>
-          </IconButton>
-          :<>
-            <Button variant="contained" sx={{
-              marginRight: 2,
-              backgroundImage: 'linear-gradient(to right, #348F50 0%, #56B4D3  50%, #348F50  100%);',
-              padding: '15px 45px;',
+            {isloginIn ?
+             <IconButton onClick={() => handleNvigate("/profile")}>
+                <Avatar src={window.$api+'/image/beer.jpg'} alt=""/>
+              </IconButton>
+              :
+             <>
+              <Button variant="contained" sx={{
+                marginRight: 2,
+                backgroundImage: 'linear-gradient(to right, #348F50 0%, #56B4D3  50%, #348F50  100%);',
+                padding: '15px 45px;',
 
-              borderRadius: '10px;',
+                borderRadius: '10px;',
 
-            }} onClick={handleLogin}>
-              Sign In
-            </Button>
-            <Button variant="contained" sx={{
-              marginRight: 2,
-              backgroundImage: 'linear-gradient(to right, #1D2B64 0%, #F8CDDA  100%, #1D2B64  100%);',
-              padding: '15px 45px;',
+              }} onClick={handleLogin}>
+                Sign In
+              </Button>
+              <Button variant="contained" sx={{
+                marginRight: 2,
+                backgroundImage: 'linear-gradient(to right, #1D2B64 0%, #F8CDDA  100%, #1D2B64  100%);',
+                padding: '15px 45px;',
 
-              borderRadius: '10px;',
-            }}
-              onClick={handleLoginUp}>Sign Up</Button>
-                 </>
-        }
+                borderRadius: '10px;',
+              }}
+                onClick={handleLoginUp}>Sign Up</Button>
+            </>
+          }
           </Box>
-       
-           <IconButton onClick={handleClick}>
+          <Box sx={{ display: { md: "none", xs: "flex" } }} >
+
+            <IconButton onClick={() => handleNvigate("/profile")}>
+              <Avatar src={window.$api+'/image/beer.jpg'} alt=""/>
+            </IconButton>
+
+            <IconButton onClick={handleClick}>
               <WidgetsIcon
                 fontSize="large"
-                sx={{ display: { md: "none", xs: "flex", color: 'red' } }} />
+              />
             </IconButton>
+
+          </Box>
         </Box>
         <Menu
           id="basic-menu"
@@ -118,16 +132,28 @@ export default function Navabar(props) {
           }}
 
         >
-        <MenuItem onClick={() => {handleNvigate("/project");handleClose()}}>Project</MenuItem>
-          <MenuItem onClick={() => {handleNvigate("/story");handleClose()}}>Story</MenuItem>
-          <MenuItem onClick={() => {handleNvigate("/about-us");handleClose()}}>About Us</MenuItem>
-          <MenuItem onClick={() => {handleNvigate("/contractus");handleClose()}}>Contract Us</MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Button variant="contained" color="success" fullWidth onClick={handleLogin}>Sign In</Button>
-          </MenuItem>
-          <MenuItem onClick={handleClose}>
-            <Button variant="contained" color="error" fullWidth onClick={handleLoginUp}>Sign Up</Button>
-          </MenuItem>
+          {isloginIn &&
+            <MenuItem>
+              <IconButton onClick={() => handleNvigate("/profile")}>
+              <Avatar src={window.$api+'/image/beer.jpg'} alt=""/>
+              </IconButton>
+            </MenuItem>
+          }
+          <MenuItem onClick={() => { handleNvigate("/project"); handleClose() }}>Project</MenuItem>
+          <MenuItem onClick={() => { handleNvigate("/story"); handleClose() }}>Story</MenuItem>
+          <MenuItem onClick={() => { handleNvigate("/about-us"); handleClose() }}>About Us</MenuItem>
+          <MenuItem onClick={() => { handleNvigate("/contractus"); handleClose() }}>Contract Us</MenuItem>
+          {isloginIn &&
+            
+              <MenuItem onClick={handleClose}>
+                <Button variant="contained" color="success" fullWidth onClick={handleLogin}>Sign In</Button>
+              </MenuItem>
+          }
+          {isloginIn &&
+              <MenuItem onClick={handleClose}>
+                <Button variant="contained" color="error" fullWidth onClick={handleLoginUp}>Sign Up</Button>
+              </MenuItem>  
+          }
         </Menu>
       </Container>
     </Box>
