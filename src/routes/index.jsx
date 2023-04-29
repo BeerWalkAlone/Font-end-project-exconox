@@ -23,7 +23,7 @@ export default function Index() {
     const [openSignInDiag, setopenSignInDiag] = useState(false)
     const [opensignUpDiag, setopensignUpDiag] = useState(false)
     const [isloginIn, setisloginIn] = useState(false)
-    const [userinfo, setuserinfo] = useState(false)
+    const [userInfo, setuserInfo] = useState({})
 
     useEffect(() => {
         axios({
@@ -34,6 +34,7 @@ export default function Index() {
             switch (res.data.status) {
                 case 200:
                     setisloginIn(true)
+                    setuserInfo(res.data.data)
                     break;
 
                 default:
@@ -55,7 +56,8 @@ export default function Index() {
     const globalState = {
         isloginIn,
         setisloginIn,
-        userinfo
+        userInfo,
+        setuserInfo
     }
     return (
         <>

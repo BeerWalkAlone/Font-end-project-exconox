@@ -12,7 +12,7 @@ const textStyle = {
 export default function Navabar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const open = Boolean(anchorEl)
-  const { isloginIn} = useContext(userContext)
+  const { isloginIn, userInfo} = useContext(userContext)
 
 
   const navigate = useNavigate();
@@ -83,7 +83,7 @@ export default function Navabar(props) {
           >
             {isloginIn ?
              <IconButton onClick={() => handleNvigate("/profile")}>
-                <Avatar src={window.$api+'/image/beer.jpg'} alt=""/>
+                <Avatar src={window.$api+'/image/' + userInfo?.img} alt=""/>
               </IconButton>
               :
              <>
@@ -111,7 +111,7 @@ export default function Navabar(props) {
           <Box sx={{ display: { md: "none", xs: "flex" } }} >
 
             <IconButton onClick={() => handleNvigate("/profile")}>
-              <Avatar src={window.$api+'/image/beer.jpg'} alt=""/>
+              <Avatar src={window.$api+'/image/'+ userInfo?.img} alt=""/>
             </IconButton>
 
             <IconButton onClick={handleClick}>
@@ -135,7 +135,7 @@ export default function Navabar(props) {
           {isloginIn &&
             <MenuItem>
               <IconButton onClick={() => handleNvigate("/profile")}>
-              <Avatar src={window.$api+'/image/beer.jpg'} alt=""/>
+              {/* <Avatar src={window.$api+'/image/beer.jpg'} alt=""/> */}
               </IconButton>
             </MenuItem>
           }

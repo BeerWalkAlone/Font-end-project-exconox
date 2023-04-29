@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState , useContext} from 'react'
 import axios from 'axios'
-
 import { Dialog, DialogTitle, TextField, DialogContent, DialogActions, Button, Stack, Box } from '@mui/material'
+import {userContext} from '../routes/index'
+
 export default function SignInDialog(props) {
     const [signInData, setsignInData] = useState({})
+    const {setuserInfo} = useContext(userContext)
+
     const handleOpenSignUp = () => {
         props.setopenSignInDiag(false)
         props.setopensignUpDiag(true)
@@ -21,6 +24,7 @@ export default function SignInDialog(props) {
                     alert(res.data.msg)
                     props.setopenSignInDiag(false)
                     props.setisloginIn(true)
+                    setuserInfo(res.data.data)
                     console.log(res.data)
                     
                     break;

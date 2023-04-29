@@ -8,7 +8,7 @@ import Img5 from '../Images/econox2.jpg'
 import Img6 from '../Images/plastic.jpg'
 
 
-import WaterDropIcon from '@mui/icons-material/WaterDrop';
+
 import SendIcon from '@mui/icons-material/Send';
 import { useNavigate } from "react-router-dom";
 
@@ -85,7 +85,7 @@ export default function contractus() {
       }}>
         <Box flex={1}>
           <Typography variant="h4">
-            <WaterDropIcon /> Our Sponsor
+             Our Sponsor
           </Typography>
         </Box>
       </Box>

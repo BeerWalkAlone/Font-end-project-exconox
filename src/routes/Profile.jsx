@@ -1,8 +1,46 @@
-import React from 'react'
+import React ,{useEffect, useContext, useState}from 'react'
+import { userContext } from './index'
 import { Container, TextField, Typography, Box, Stack, Button, Divider, Avatar, Card, FormControl, InputLabel, OutlinedInput, InputAdornment, MenuItem } from "@mui/material"
 import Img from '../Images/meme.png'
-import { fontFamily, fontSize } from '@mui/system'
+import axios from 'axios'
+
 export default function Profile() {
+
+    const [userprofiledata, setuserprofiledata] = useState({})
+
+    const {userInfo} = useContext(userContext)
+    useEffect(() => {
+      axios ({
+        url:window.$api + '/users/' + userInfo.id,
+        method: 'get',  
+      }).then(res => {
+        console.log(res.data)
+        setuserprofiledata(res.data[0])
+      })
+    }, [userInfo.id])
+
+    const handleChange = (e) => {
+      console.log(e.target.value, e.target.name)
+      let name = e.target.name
+      let value = e.target.value
+      setuserprofiledata(prevState => ({
+          ...prevState,
+          [name]: value
+      }))
+  }
+
+  const handleUpdate = () => {
+    axios({
+      url:window.$api+ '/updateUser/' + userInfo.id,
+      method: 'put',
+      data: {
+        username: userprofiledata.username,
+        email: userprofiledata.email,
+        firstname: userprofiledata.firstname,
+        lastname: userprofiledata.lastname
+      }
+    })
+  }
 
   const Language = [
     {
@@ -50,6 +88,8 @@ export default function Profile() {
               </Box>
             </Box>
           </Box>
+
+          <Button onClick={handleUpdate}>Update</Button>
           <h2 style={{ paddingLeft: 20, paddingTop: 10 }}>Account</h2><hr />
 
           <Box display={'flex'} flex={1} pt={5} paddingLeft={5}>
@@ -57,7 +97,7 @@ export default function Profile() {
               <h3 style={{ color: '#A9A9A9' }}>Username</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40 }}>
-              <TextField fullWidth label="Username" id="Username" />
+              <TextField fullWidth label="Username" id="Username" name='username' value={userprofiledata?.username || ""} onChange={handleChange}/>
             </Box>
           </Box>
 
@@ -66,25 +106,28 @@ export default function Profile() {
               <h3 style={{ color: '#A9A9A9' }}>Email</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 44 }}>
-              <TextField fullWidth id="standard-basic" label="Email" variant="outlined" />
+              <TextField fullWidth id="standard-basic" label="Email" variant="outlined" 
+              value={userprofiledata?.email || ""} name='email' onChange={handleChange}/>
             </Box>
           </Box>
 
           <Box display={'flex'} flex={1} pt={5} paddingLeft={5}>
             <Box >
-              <h3 style={{ color: '#A9A9A9' }}>Password</h3>
+              <h3 style={{ color: '#A9A9A9' }}>Firstname</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40.1 }}>
-              <TextField fullWidth id="standard-basic" label="Password" variant="outlined" type="password" />
+              <TextField fullWidth id="standard-basic" label="firstname" variant="outlined" name='firstname'
+              value={userprofiledata?.firstname || ""} onChange={handleChange} />
             </Box>
           </Box>
 
           <Box display={'flex'} flex={1} pt={5} paddingLeft={5}>
             <Box >
-              <h3 style={{ color: '#A9A9A9' }}>Full name</h3>
+              <h3 style={{ color: '#A9A9A9' }}>Lastname</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40 }}>
-              <TextField fullWidth id="standard-basic" label="john Wick 4" variant="outlined" />
+              <TextField fullWidth id="standard-basic" label="lastname" variant="outlined"  name='lastname'
+              value={userprofiledata?.lastname || ""} onChange={handleChange}/>
             </Box>
           </Box>
 
@@ -93,7 +136,7 @@ export default function Profile() {
               <h3 style={{ color: '#A9A9A9' }}>Title</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 45.2 }}>
-              <TextField fullWidth id="standard-basic" label="Title" variant="outlined" />
+              <TextField fullWidth id="standard-basic" label="Title" variant="outlined"  />
             </Box>
           </Box>
 
