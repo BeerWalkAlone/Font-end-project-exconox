@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Container, Typography, Box, Stack, Button } from "@mui/material"
 import Card from '../components/Card'
-import ImgPTL from '../image/Pha That Luang .jpg'
-import ImgPM from '../image/luang-prabang.jpg'
-import ImgWXT from '../image/Wat Xieng Thong.png'
-import ImgVV from '../image/Vang Vieng Travel Guide.jpg'
-import ImgPJ from '../image/The plan of jar.jpg'
-import ImgVP from '../image/Vat Phou.jpg'
+// import ImgPTL from '../image/Pha That Luang .jpg'
+// import ImgPM from '../image/luang-prabang.jpg'
+// import ImgWXT from '../image/Wat Xieng Thong.png'
+// import ImgVV from '../image/Vang Vieng Travel Guide.jpg'
+// import ImgPJ from '../image/The plan of jar.jpg'
+// import ImgVP from '../image/Vat Phou.jpg'
 
 import axios from 'axios'
 export default function project() {
