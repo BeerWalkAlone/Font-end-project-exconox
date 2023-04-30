@@ -1,37 +1,37 @@
-import React ,{useEffect, useContext, useState}from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import { userContext } from './index'
-import { Container, TextField, Typography, Box, Stack, Button, Divider, Avatar, Card, FormControl, InputLabel, OutlinedInput, InputAdornment, MenuItem } from "@mui/material"
+import { Container, TextField, Typography, Box, Stack, Button, Divider, Avatar, Card, FormControl, InputLabel, OutlinedInput, InputAdornment, MenuItem, IconButton } from "@mui/material"
 import Img from '../Images/meme.png'
 import axios from 'axios'
 
 export default function Profile() {
 
-    const [userprofiledata, setuserprofiledata] = useState({})
+  const [userprofiledata, setuserprofiledata] = useState({})
 
-    const {userInfo} = useContext(userContext)
-    useEffect(() => {
-      axios ({
-        url:window.$api + '/users/' + userInfo.id,
-        method: 'get',  
-      }).then(res => {
-        console.log(res.data)
-        setuserprofiledata(res.data[0])
-      })
-    }, [userInfo.id])
+  const { userInfo , setuserInfo} = useContext(userContext)
+  useEffect(() => {
+    axios({
+      url: window.$api + '/users/' + userInfo.id,
+      method: 'get',
+    }).then(res => {
+      console.log(res.data)
+      setuserprofiledata(res.data[0])
+    })
+  }, [userInfo.id])
 
-    const handleChange = (e) => {
-      console.log(e.target.value, e.target.name)
-      let name = e.target.name
-      let value = e.target.value
-      setuserprofiledata(prevState => ({
-          ...prevState,
-          [name]: value
-      }))
+  const handleChange = (e) => {
+    console.log(e.target.value, e.target.name)
+    let name = e.target.name
+    let value = e.target.value
+    setuserprofiledata(prevState => ({
+      ...prevState,
+      [name]: value
+    }))
   }
 
   const handleUpdate = () => {
     axios({
-      url:window.$api+ '/updateUser/' + userInfo.id,
+      url: window.$api + '/updateUser/' + userInfo.id,
       method: 'put',
       data: {
         username: userprofiledata.username,
@@ -56,7 +56,24 @@ export default function Profile() {
       label: 'Thailand'
     },
   ]
-  // background: linear - gradient(90deg, #1CB5E0 0 %, #000851 100 %);
+  const handleGetupImage = (e) => {
+    let file = e.target.files[0]
+   
+    let formData = new FormData()
+    formData.append('image',file)
+    formData.append('id',userInfo.id)
+
+    axios({
+      url: window.$api +'/uploadProfileImage',
+      method:'post',
+      data: formData,
+      headers: {
+        'Content-Type':'multipart/from-data'
+      }
+    }).then(res => {
+     setuserInfo({...userInfo, img:res.data.data.img})
+    })
+  }
   return (
     <Box sx={{
       background: 'rgb(124, 185, 232)',
@@ -70,9 +87,10 @@ export default function Profile() {
         <Card sx={{ maxWidth: 1200, background: 'AliceBlue' }}>
           <Box display={'flex'} flex={1} pt={5} paddingLeft={5}>
             <Box >
-              <Avatar sx={{ width: 200, height: 250 }}>
-                <img src={Img} alt="" />
-              </Avatar>
+              <IconButton component="label">
+                <Avatar sx={{ width: 200, height: 200, fontSize: 60 }} src={window.$api + '/image/' + userInfo.img} alt='' />
+                <input type='file' hidden accept='image/*' onChange={handleGetupImage}/>
+              </IconButton>
             </Box>
             <Box paddingLeft={30}>
               <h1 style={{ fontSize: 44, fontFamily: 'revert-layer' }}>John Wick</h1>
@@ -97,7 +115,7 @@ export default function Profile() {
               <h3 style={{ color: '#A9A9A9' }}>Username</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40 }}>
-              <TextField fullWidth label="Username" id="Username" name='username' value={userprofiledata?.username || ""} onChange={handleChange}/>
+              <TextField fullWidth label="Username" id="Username" name='username' value={userprofiledata?.username || ""} onChange={handleChange} />
             </Box>
           </Box>
 
@@ -106,8 +124,8 @@ export default function Profile() {
               <h3 style={{ color: '#A9A9A9' }}>Email</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 44 }}>
-              <TextField fullWidth id="standard-basic" label="Email" variant="outlined" 
-              value={userprofiledata?.email || ""} name='email' onChange={handleChange}/>
+              <TextField fullWidth id="standard-basic" label="Email" variant="outlined"
+                value={userprofiledata?.email || ""} name='email' onChange={handleChange} />
             </Box>
           </Box>
 
@@ -117,7 +135,7 @@ export default function Profile() {
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40.1 }}>
               <TextField fullWidth id="standard-basic" label="firstname" variant="outlined" name='firstname'
-              value={userprofiledata?.firstname || ""} onChange={handleChange} />
+                value={userprofiledata?.firstname || ""} onChange={handleChange} />
             </Box>
           </Box>
 
@@ -126,8 +144,8 @@ export default function Profile() {
               <h3 style={{ color: '#A9A9A9' }}>Lastname</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 40 }}>
-              <TextField fullWidth id="standard-basic" label="lastname" variant="outlined"  name='lastname'
-              value={userprofiledata?.lastname || ""} onChange={handleChange}/>
+              <TextField fullWidth id="standard-basic" label="lastname" variant="outlined" name='lastname'
+                value={userprofiledata?.lastname || ""} onChange={handleChange} />
             </Box>
           </Box>
 
@@ -136,7 +154,7 @@ export default function Profile() {
               <h3 style={{ color: '#A9A9A9' }}>Title</h3>
             </Box>
             <Box sx={{ width: 500, maxWidth: '100%', paddingLeft: 45.2 }}>
-              <TextField fullWidth id="standard-basic" label="Title" variant="outlined"  />
+              <TextField fullWidth id="standard-basic" label="Title" variant="outlined" />
             </Box>
           </Box>
 
